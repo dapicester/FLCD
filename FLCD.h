@@ -23,10 +23,16 @@
 #define FLCD_H
 
 #include <Arduino.h>
+#include <SoftwareSerial.h> // this must be included in the sketch too
 
 /// Functions for using FlamingoEda LCD.
-class FLCDClass {
+class FLCD {
 public:
+
+    /// Create a new object.
+    FLCD(byte pin);
+
+    ~FLCD();
 
     /// Clear the screen.
     void clear();
@@ -45,22 +51,22 @@ public:
     template <typename T>
     void append(T what);
 
+private:
+    SoftwareSerial serial;
+
 };
 
-/// Shared instance.
-extern FLCDClass FLCD;
-
 template <typename T>
-void FLCDClass::print(T what) {
-    Serial.print("$PRINT ");
-    Serial.print(what);
-    Serial.print("\r\n");
+void FLCD::print(T what) {
+    serial.print("$PRINT ");
+    serial.print(what);
+    serial.print("\r\n");
 }
 
 template <typename T>
-void FLCDClass::append(T what) {
-    Serial.print(what);
-    Serial.print("\r\n");
+void FLCD::append(T what) {
+    serial.print(what);
+    serial.print("\r\n");
 }
 
 #endif // FLCD_H

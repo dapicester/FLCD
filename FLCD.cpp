@@ -21,24 +21,29 @@
 
 #include "FLCD.h"
 
-void FLCDClass::clear() {
-    Serial.print("$CLEAR\r\n");
+FLCD::FLCD(byte pin) : serial(0, pin) {
+    serial.begin(9600); // only this speed is supported
 }
 
-void FLCDClass::cursor(bool display, bool blink) {
-    Serial.print("$CURSOR ");
-    Serial.print(display ? "1" : "0");
-    Serial.print(" ");
-    Serial.print(blink ? "1" : "0");
-    Serial.print("\r\n");
+FLCD::~FLCD() {}
+
+void FLCD::clear() {
+    serial.print("$CLEAR\r\n");
 }
 
-void FLCDClass::go(int line, int column) {
-    Serial.print("$GO ");
-    Serial.print(line);
-    Serial.print(" ");
-    Serial.print(column);
-    Serial.print("\r\n");
+void FLCD::cursor(bool display, bool blink) {
+    serial.print("$CURSOR ");
+    serial.print(display ? "1" : "0");
+    serial.print(" ");
+    serial.print(blink ? "1" : "0");
+    serial.print("\r\n");
 }
 
-FLCDClass FLCD;
+void FLCD::go(int line, int column) {
+    serial.print("$GO ");
+    serial.print(line);
+    serial.print(" ");
+    serial.print(column);
+    serial.print("\r\n");
+}
+

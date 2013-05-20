@@ -2,8 +2,8 @@ FLCD
 ====
 
 This library provides a simple API for the LCD display provided by FlamingoEda.
-The display uses serial communication and responds to commands written in the
-format:
+The display uses serial communication at 9600 baud/sec and responds to commands i
+written in the format:
 
     "$COMMAND arguments\r\n"
 
@@ -18,12 +18,12 @@ Available commands are:
 - `$CURSOR display blink` 
    enable (`1`) or disable (`0`) the cursor displaying and blinking
 
-The library wraps such commands:
+The library wraps such commands in the class `FLCD`:
 
-- `FLCD.clear()`
-- `FLCD.go(int line, int column)`
-- `FLCD.print()` and `FLCD.append()`
-- `FLCD.cursor(bool display, bool blink)`
+- `clear()`
+- `go(int line, int column)`
+- `print()` and `FLCD.append()`
+- `cursor(bool display, bool blink)`
 
 Library written by Paolo D'Apice <paolo.dapice@gmail.com>
 

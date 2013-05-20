@@ -12,7 +12,7 @@ FLCD	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
-clear	KEYWORD
+clear	KEYWORD2
 go	KEYWORD2
 print	KEYWORD2
 cursor	KEYWORD2
