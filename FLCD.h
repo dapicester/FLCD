@@ -47,10 +47,6 @@ public:
     template <typename T>
     void print(T what);
 
-    /// Append text.
-    template <typename T>
-    void append(T what);
-
 private:
     SoftwareSerial serial;
 
@@ -59,12 +55,6 @@ private:
 template <typename T>
 void FLCD::print(T what) {
     serial.print("$PRINT ");
-    serial.print(what);
-    serial.print("\r\n");
-}
-
-template <typename T>
-void FLCD::append(T what) {
     serial.print(what);
     serial.print("\r\n");
 }
